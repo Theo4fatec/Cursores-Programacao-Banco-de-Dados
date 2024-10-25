@@ -24,3 +24,27 @@ BEGIN
     CLOSE cursor_video_count_category;
 END;
 $$
+
+--Exercicio 1.2
+DO
+$$
+DECLARE
+    v_youtuber VARCHAR(300);
+    --1. declaração do cursor
+    cursor_nomes_ordem_reversa CURSOR FOR SELECT youtuber FROM tb_top_youtubers;
+BEGIN
+    --2. abertura do cursor
+    OPEN cursor_nomes_ordem_reversa;
+    
+    MOVE LAST FROM cursor_nomes_ordem_reversa;
+
+    LOOP
+    --3. recuperação de dados
+        FETCH BACKWARD FROM cursor_nomes_ordem_reversa INTO v_youtuber;
+        EXIT WHEN NOT FOUND;
+        RAISE NOTICE '%', v_youtuber;
+    END LOOP;
+    --4. fechamento do cursor
+    CLOSE cursor_nomes_ordem_reversa;
+END;
+$$
