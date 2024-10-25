@@ -48,3 +48,15 @@ BEGIN
     CLOSE cursor_nomes_ordem_reversa;
 END;
 $$
+
+--Exercicio 1.3
+/* 
+Anti-pattern - RBAR(Row By Agonizing Row) é uma forma de processamento de dados, os dados são manipulados linha por linha, cada linha é processada exclusivamente. O RBAR é diferente do que operações embasadas em conjuntos, que o processamento de dados manipula todas as linhas uma vez só. O RBAR causa mais custos de performance para a máquina, ampliando o consumo do processador e memória, pois concede várias ações com o banco de dados. Dependendo do caso que for aplicado o código, é interessante usar o RBAR, é recomendado usar em códigos que precisem de interações em cada linha, e que o programa não seja tão grande, e utilizando o RBAR é mais fácil encontrar erros, porque como cada linha é processada de forma exclusiva, fica mais acessível de encontrar falhas.
+
+https://www.red-gate.com/simple-talk/databases/sql-server/t-sql-programming-sql-server/rbar-row-by-agonizing-row/
+
+https://nolongerset.com/under-100-rbar/
+
+https://www.sqlservercentral.com/articles/hidden-rbar-triangular-joins
+
+*/
